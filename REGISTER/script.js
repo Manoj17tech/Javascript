@@ -25,3 +25,9 @@ document.getElementById('register-form').addEventListener('submit', function (e)
     reader.readAsDataURL(photoFile);
   }
 });
+
+
+
+const name = "Manoj"
+console.log(name);
+
