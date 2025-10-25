@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Simple Session App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Login Page -->
+  <div id="login-page">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username"><br><br>
+    <input type="password" id="password" placeholder="Password"><br><br>
+    <button onclick="login()">Login</button>
+    <p id="error-msg" class="hidden">Invalid username or password!</p>
+  </div>
+
+  <!-- Main Page -->
+  <div id="main-page" class="hidden">
+    <h2>Welcome to the Main Page!</h2>
+    <p id="timer">Session ends in: 5:00</p>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

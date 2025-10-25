@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  font-family: 'Poppins', sans-serif;
+}
+
+.clock-container {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 30px 50px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.clock {
+  color: #fff;
+  font-size: 4rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+#ampm {
+  font-size: 2rem;
+  margin-left: 10px;
+  vertical-align: super;
+  color: #ffd700;
+}

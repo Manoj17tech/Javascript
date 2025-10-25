@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACUBE - Tech Training Institute</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            background-color: #f5f7ff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            margin: 0.5rem auto 0;
+            border-radius: 10px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 1.5rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin: 0 1rem;
+        }
+
+        .nav-link {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 9rem 0 5rem;
+            background: linear-gradient(135deg, #f0f4ff 0%, #e6f0ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            opacity: 0.1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent), var(--secondary));
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            color: var(--dark);
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: block;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            color: var(--gray);
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-btns .btn {
+            min-width: 180px;
+        }
+
+        /* Courses Section */
+        .courses {
+            background-color: white;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .course-header h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-body {
+            padding: 1.5rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .course-meta div {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-meta span:first-child {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .course-meta span:last-child {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .course-actions {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .course-actions .btn {
+            flex: 1;
+            padding: 0.6rem;
+            font-size: 0.9rem;
+        }
+
+        /* Why Us Section */
+        .why-us {
+            background: linear-gradient(135deg, #f9fafb 0%, #f1f5f9 100%);
+        }
+
+        .why-us-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .why-us-content p {
+            font-size: 1.1rem;
+            color: var(--gray);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Batches Section */
+        .batches {
+            background-color: white;
+        }
+
+        .batches-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .batches-table th {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: left;
+            padding: 1.2rem 1.5rem;
+            font-weight: 600;
+        }
+
+        .batches-table td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--gray);
+        }
+
+        .batches-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .batches-table .status {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-available {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success);
+        }
+
+        .status-few {
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
+        }
+
+        .batches-table .btn {
+            padding: 0.5rem 1.2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Placed Students Section */
+        .placed-students {
+            background: linear-gradient(135deg, #f0f9ff 0%, #f0fdf4 100%);
+        }
+
+        .students-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .student-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .student-card::before {
+            content: '"';
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--primary);
+            opacity: 0.1;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-content {
+            padding: 0 1rem 1.5rem 2rem;
+            position: relative;
+            z-index: 2;
+            font-style: italic;
+            color: var(--dark);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .student-info {
+            display: flex;
+            align-items: center;
+            padding-top: 1.5rem;
+        }
+
+        .student-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .student-details {
+            flex: 1;
+        }
+
+        .student-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .student-position {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .package {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--success);
+            display: flex;
+            align-items: center;
+        }
+
+        .package i {
+            margin-right: 0.5rem;
+        }
+
+        /* Demo Section */
+        .demo {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+        }
+
+        .demo .section-title h2 {
+            color: white;
+        }
+
+        .demo-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.9rem 1.2rem;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
+        }
+
+        .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1.5rem;
+            color: white;
+            font-weight: 500;
+            text-decoration: none;
+            background: #25D366;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            transition: var(--transition);
+        }
+
+        .whatsapp-link:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        .whatsapp-link i {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-links a i {
+            margin-right: 0.75rem;
+            color: var(--primary);
+        }
+
+        .contact-info {
+            color: #cbd5e1;
+        }
+
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info i {
+            margin-right: 1rem;
+            color: var(--primary);
+            min-width: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .map-container {
+            height: 200px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* Trust Badges */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            box-shadow: var(--shadow);
+        }
+
+        .badge i {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-right: 0.75rem;
+        }
+
+        .badge-content h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            line-height: 1;
+        }
+
+        .badge-content p {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        /* Floating Elements */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+            background: #128C7E;
+        }
+
+        .floating-demo {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%) rotate(-90deg);
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            font-weight: 600;
+            z-index: 998;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .floating-demo:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .batches-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                right: -100%;
+                flex-direction: column;
+                background: white;
+                width: 280px;
+                height: calc(100vh - 70px);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                padding: 2rem 0;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-item {
+                margin: 1rem 0;
+                padding: 0 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .students-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 7rem 0 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .course-actions {
+                flex-direction: column;
+            }
+            
+            .demo-form {
+                padding: 1.5rem;
+            }
+            
+            .trust-badges {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container container">
+            <a href="#" class="logo">
+                <i class="fas fa-cube"></i>
+                ACUBE
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#courses" class="nav-link">Courses</a></li>
+                <li class="nav-item"><a href="#why-us" class="nav-link">Why Us</a></li>
+                <li class="nav-item"><a href="#batches" class="nav-link">Batches</a></li>
+                <li class="nav-item"><a href="#placed-students" class="nav-link">Placed Students</a></li>
+                <li class="nav-item"><a href="#demo" class="nav-link">Book Demo</a></li>
+            </ul>
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Master IT Skills. <span>Get Hired. Switch Careers with Confidence.</span></h1>
+                <p>Hands-on training for students & professionals ready to build a future in tech.</p>
+                <div class="hero-btns">
+                    <a href="#courses" class="btn btn-primary">View Courses</a>
+                    <a href="#demo" class="btn btn-outline">Book Free Demo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges -->
+    <div class="container">
+        <div class="trust-badges">
+            <div class="badge">
+                <i class="fas fa-user-graduate"></i>
+                <div class="badge-content">
+                    <h3>100+</h3>
+                    <p>Students Placed</p>
+                </div>
+            </div>
+            <div class="badge">
+                <i class="fas fa-calendar-check"></i>
+                <div class="badge-content">
+                    <h3>5 Years</h3>
+                    <p>of Training</p>
+                </div>
+            </div>
+            <div class="badge">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <div class="badge-content">
+                    <h3>15+</h3>
+                    <p>Expert Mentors</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Courses Section -->
+    <section id="courses" class="section courses">
+        <div class="container">
+            <div class="section-title">
+                <h2><i class="fas fa-rocket"></i> Our Job-Focused IT Courses</h2>
+                <p>Hands-on training designed to get you hired</p>
+            </div>
+            <div class="courses-grid">
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>Python Basics & Advanced</h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <div>
+                                <span>Duration</span>
+                                <span>2 months</span>
+                            </div>
+                            <div>
+                                <span>Level</span>
+                                <span>Beginner to Intermediate</span>
+                            </div>
+                            <div>
+                                <span>Next Batch</span>
+                                <span>July 25</span>
+                            </div>
+                        </div>
+                        <div class="course-actions">
+                            <a href="#demo" class="btn btn-outline">Book Demo</a>
+                            <a href="#" class="btn btn-primary">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>Fullstack Web Dev</h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <div>
+                                <span>Duration</span>
+                                <span>4 months</span>
+                            </div>
+                            <div>
+                                <span>Level</span>
+                                <span>Intermediate</span>
+                            </div>
+                            <div>
+                                <span>Next Batch</span>
+                                <span>Aug 5</span>
+                            </div>
+                        </div>
+                        <div class="course-actions">
+                            <a href="#demo" class="btn btn-outline">Book Demo</a>
+                            <a href="#" class="btn btn-primary">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 3 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>Data Science & Analysis</h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <div>
+                                <span>Duration</span>
+                                <span>3 months</span>
+                            </div>
+                            <div>
+                                <span>Level</span>
+                                <span>Intermediate</span>
+                            </div>
+                            <div>
+                                <span>Next Batch</span>
+                                <span>July 30</span>
+                            </div>
+                        </div>
+                        <div class="course-actions">
+                            <a href="#demo" class="btn btn-outline">Book Demo</a>
+                            <a href="#" class="btn btn-primary">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Course 4 -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>AI & ML Bootcamp</h3>
+                    </div>
+                    <div class="course-body">
+                        <div class="course-meta">
+                            <div>
+                                <span>Duration</span>
+                                <span>4 months</span>
+                            </div>
+                            <div>
+                                <span>Level</span>
+                                <span>Advanced</span>
+                            </div>
+                            <div>
+                                <span>Next Batch</span>
+                                <span>Aug 12</span>
+                            </div>
+                        </div>
+                        <div class="course-actions">
+                            <a href="#demo" class="btn btn-outline">Book Demo</a>
+                            <a href="#" class="btn btn-primary">Enroll Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section id="why-us" class="section why-us">
+        <div class="container">
+            <div class="section-title">
+                <h2><i class="fas fa-search"></i> Why ACUBE Works for You</h2>
+            </div>
+            <div class="why-us-content">
+                <p>We don't believe in boring lectures. We train you with real-world projects, clear concepts, and mock interviews. Whether you're a fresher or career shifter, you'll build confidence step-by-step.</p>
+            </div>
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Hands-on Practice</h3>
+                    <p>Learn by doing with real-world projects, not just theory.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Small Batches</h3>
+                    <p>Personal attention with limited students per batch.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Mock Interviews</h3>
+                    <p>Prepare for placements with real interview simulations.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Expert Mentors</h3>
+                    <p>Learn from industry professionals with real-world experience.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <h3>Affordable</h3>
+                    <p>Quality training at prices accessible to local students.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Batches Section -->
+    <section id="batches" class="section batches">
+        <div class="container">
+            <div class="section-title">
+                <h2><i class="fas fa-calendar-alt"></i> Upcoming Batches</h2>
+                <p>Limited seats available. Book your spot now!</p>
+            </div>
+            <div class="table-responsive">
+                <table class="batches-table">
+                    <thead>
+                        <tr>
+                            <th>Course</th>
+                            <th>Start Date</th>
+                            <th>Mode</th>
+                            <th>Seats Left</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Python Basics</td>
+                            <td>July 25</td>
+                            <td>Offline Mysore</td>
+                            <td><span class="status status-few">4 Seats</span></td>
+                            <td><a href="#demo" class="btn btn-primary">Book Now</a></td>
+                        </tr>
+                        <tr>
+                            <td>Fullstack Web Dev</td>
+                            <td>Aug 5</td>
+                            <td>Online/Offline</td>
+                            <td><span class="status status-available">8 Seats</span></td>
+                            <td><a href="#demo" class="btn btn-primary">Book Now</a></td>
+                        </tr>
+                        <tr>
+                            <td>Data Science</td>
+                            <td>July 30</td>
+                            <td>Offline Mysore</td>
+                            <td><span class="status status-few">4 Seats</span></td>
+                            <td><a href="#demo" class="btn btn-primary">Book Now</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Placed Students Section -->
+    <section id="placed-students" class="section placed-students">
+        <div class="container">
+            <div class="section-title">
+                <h2><i class="fas fa-user-graduate"></i> Our Placed Students</h2>
+                <p>Success stories from our alumni community</p>
+            </div>
+            <div class="students-grid">
+                <!-- Student 1 -->
+                <div class="student-card">
+                    <div class="testimonial-content">
+                        <p>RP2 helped me understand machine learning concepts in a simple way. The mentors were always encouraging and supportive. I'm glad to have started my journey as an ML Developer at Zen Menaki.</p>
+                    </div>
+                    <div class="student-info">
+                        <div class="student-avatar">NV</div>
+                        <div class="student-details">
+                            <h4>Nanya Venkidesh</h4>
+                            <div class="student-position">ML Developer</div>
+                            <div class="package">
+                                <i class="fas fa-rupee-sign"></i> 12.5 LPA
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Student 2 -->
+                <div class="student-card">
+                    <div class="testimonial-content">
+                        <p>RP2 gave me the exposure and confidence I needed for my first job. The training was practical and the mentors were very helpful. I'm now a Scholar Trainee at Wipro.</p>
+                    </div>
+                    <div class="student-info">
+                        <div class="student-avatar">PR</div>
+                        <div class="student-details">
+                            <h4>Prince Reji</h4>
+                            <div class="student-position">Scholar Trainee - WILP</div>
+                            <div class="package">
+                                <i class="fas fa-rupee-sign"></i> 4.5 LPA
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Student 3 -->
+                <div class="student-card">
+                    <div class="testimonial-content">
+                        <p>RP2's practical approach and friendly mentors helped me build my skills. The program made me more confident about my career choices. I'm now working as a Category Growth Analyst at Xylem Learning.</p>
+                    </div>
+                    <div class="student-info">
+                        <div class="student-avatar">SP</div>
+                        <div class="student-details">
+                            <h4>Swathy P</h4>
+                            <div class="student-position">Category Growth Analyst</div>
+                            <div class="package">
+                                <i class="fas fa-rupee-sign"></i> 6.8 LPA
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Student 4 -->
+                <div class="student-card">
+                    <div class="testimonial-content">
+                        <p>After a career break, I was worried about getting back to work. RP2's program and guidance helped me regain my confidence. I'm grateful to have joined EY as a Technical Consultant.</p>
+                    </div>
+                    <div class="student-info">
+                        <div class="student-avatar">RF</div>
+                        <div class="student-details">
+                            <h4>Resni Faizal</h4>
+                            <div class="student-position">Technical Consultant</div>
+                            <div class="package">
+                                <i class="fas fa-rupee-sign"></i> 9.2 LPA
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Student 5 -->
+                <div class="student-card">
+                    <div class="testimonial-content">
+                        <p>Switching from hospital administration to analytics was a big step for me. RP2's support and training made the journey much smoother. I'm happy to be working as an Internal Audit Data Analyst at Manappuram Jewellers.</p>
+                    </div>
+                    <div class="student-info">
+                        <div class="student-avatar">JJ</div>
+                        <div class="student-details">
+                            <h4>Juhi Joy</h4>
+                            <div class="student-position">Internal Audit Data Analyst, Grade Asst Manager</div>
+                            <div class="package">
+                                <i class="fas fa-rupee-sign"></i> 7.5 LPA
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Student 6 -->
+                <div class="student-card">
+                    <div class="testimonial-content">
+                        <p>RP2's training was very hands-on and helped me understand the basics well. The mentors were supportive and always available for guidance. I'm happy to start my career at ANSURTECH.</p>
+                    </div>
+                    <div class="student-info">
+                        <div class="student-avatar">AJ</div>
+                        <div class="student-details">
+                            <h4>Abdul Jaleel</h4>
+                            <div class="student-position">Jr. Data Analyst</div>
+                            <div class="package">
+                                <i class="fas fa-rupee-sign"></i> 3.5 LPA
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section id="demo" class="section demo">
+        <div class="container">
+            <div class="section-title">
+                <h2><i class="fas fa-edit"></i> Ready to Start? Book a Free Demo Class</h2>
+                <p>Experience our teaching methodology first-hand</p>
+            </div>
+            <form class="demo-form" id="demoForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="course">Course of Interest</label>
+                    <select id="course" class="form-control" required>
+                        <option value="">Select a course</option>
+                        <option value="python">Python Basics & Advanced</option>
+                        <option value="webdev">Fullstack Web Development</option>
+                        <option value="datascience">Data Science & Analysis</option>
+                        <option value="aiml">AI & ML Bootcamp</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="batch">Preferred Batch</label>
+                    <select id="batch" class="form-control" required>
+                        <option value="">Select a batch</option>
+                        <option value="july25">July 25 (Python)</option>
+                        <option value="july30">July 30 (Data Science)</option>
+                        <option value="aug5">Aug 5 (Web Dev)</option>
+                        <option value="aug12">Aug 12 (AI & ML)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">Submit Request</button>
+            </form>
+            <a href="https://wa.me/919876543210" class="whatsapp-link" target="_blank">
+                <i class="fab fa-whatsapp"></i> Chat with our counselor on WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>ACUBE Tech Institute</h3>
+                    <p style="color: #cbd5e1; margin-bottom: 1.5rem;">Master IT Skills. Get Hired. Switch Careers with Confidence.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> <span>Mysore Campus: 123 Tech Street, Mysore, Karnataka</span></p>
+                        <p><i class="fas fa-map-marker-alt"></i> <span>Chamarajanagara Campus: 456 Innovation Road, Chamarajanagara</span></p>
+                        <p><i class="fas fa-phone-alt"></i> <span>+91 9876543210</span></p>
+                        <p><i class="fab fa-whatsapp"></i> <span>+91 9876543210</span></p>
+                        <p><i class="fas fa-envelope"></i> <span>info@acubeinstitute.com</span></p>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#courses"><i class="fas fa-chevron-right"></i> Courses</a></li>
+                        <li><a href="#batches"><i class="fas fa-chevron-right"></i> Batches</a></li>
+                        <li><a href="#placed-students"><i class="fas fa-chevron-right"></i> Placed Students</a></li>
+                        <li><a href="#demo"><i class="fas fa-chevron-right"></i> Book Demo</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Our Location</h3>
+                    <div class="map-container">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span>Mysore Campus</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 ACUBE Tech Institute. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Elements -->
+    <a href="#demo" class="floating-demo">Book Free Demo</a>
+    <a href="https://wa.me/919876543210" class="floating-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Form Submission
+        const demoForm = document.getElementById('demoForm');
+        
+        demoForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const course = document.getElementById('course').value;
+            
+            // Show success message
+            alert(`Thank you ${name}! We've received your demo request for ${course}. We'll call you at ${phone} within 24 hours.`);
+            
+            // Reset form
+            demoForm.reset();
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+        
+        // Fixed header on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('sticky', window.scrollY > 100);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

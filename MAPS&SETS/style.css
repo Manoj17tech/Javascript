@@ -1,0 +1,29 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin-top: 50px;
+}
+
+input {
+  padding: 8px;
+  font-size: 16px;
+  width: 200px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.name {
+  font-size: 20px;
+  margin: 10px 0;
+  transition: 0.3s;
+  opacity: 0.5;
+}
+
+.highlight {
+  font-weight: bold;
+  color: green;
+  opacity: 1;
+}

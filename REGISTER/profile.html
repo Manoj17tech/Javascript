@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Profile Details</h2>
+    <img id="profile-photo" alt="Profile Photo" />
+    <p><strong>Name:</strong> <span id="profile-name"></span></p>
+    <p><strong>Email:</strong> <span id="profile-email"></span></p>
+    <p><strong>Phone:</strong> <span id="profile-phone"></span></p>
+  </div>
+
+  <script>
+    const name = localStorage.getItem('name');
+    const email = localStorage.getItem('email');
+    const phone = localStorage.getItem('phone');
+    const photo = localStorage.getItem('photo');
+
+    document.getElementById('profile-name').textContent = name;
+    document.getElementById('profile-email').textContent = email;
+    document.getElementById('profile-phone').textContent = phone;
+    document.getElementById('profile-photo').src = photo;
+  </script>
+</body>
+</html>
