@@ -31,3 +31,7 @@ document.getElementById('register-form').addEventListener('submit', function (e)
 const name = "Manoj"
 console.log(name);
 
+
+const friendName = "Niharika"
+console.log(friendName);
+
